@@ -1,0 +1,95 @@
+body {
+  font-family: 'Inter', 'Segoe UI', Roboto, -apple-system, sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* Card styling */
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1) !important;
+}
+
+.card-header {
+  font-weight: 600;
+  border-bottom: none;
+}
+
+/* Form styling */
+.form-control {
+  border: 1px solid #ced4da;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control:focus {
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Table styling */
+.table {
+  font-size: 0.95rem;
+}
+
+.table th {
+  font-weight: 600;
+  border-top: none;
+}
+
+/* Badge styling */
+.badge {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Progress bar styling */
+.progress {
+  background-color: #edf2f7;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+/* Button styling */
+.btn {
+  letter-spacing: 0.5px;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom container padding */
+.container-fluid {
+  max-width: 1400px;
+}
+
+/* Spinner animation */
+.spinner-border {
+  margin-right: 8px;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+
+.display-6 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.lead {
+  font-weight: 400;
+}
+
+/* Footer styling */
+footer {
+  font-size: 0.85rem;
+  color: #6c757d;
+}
