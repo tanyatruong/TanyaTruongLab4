@@ -235,7 +235,7 @@ function App() {
   return (
     <Container fluid className="px-4 py-5 bg-light">
       <div className="mb-5 text-center">
-        <h1 className="fw-bold text-primary">Iris Flower Classification</h1>
+        <h1 className="fw-bold text-primary">Iris Flower Prediction</h1>
       </div>
       
       <Row className="g-4 mb-4">
@@ -404,17 +404,17 @@ function App() {
                 <tbody>
                   <tr>
                     <td><Badge bg="primary">Setosa</Badge></td>
-                    <td><code>[1, 0, 0]</code></td>
+                    <td>[1, 0, 0]</td>
                     <td>Short petals, wide sepals</td>
                   </tr>
                   <tr>
                     <td><Badge bg="success">Virginica</Badge></td>
-                    <td><code>[0, 1, 0]</code></td>
+                    <td>[0, 1, 0]</td>
                     <td>Long petals, narrow sepals</td>
                   </tr>
                   <tr>
                     <td><Badge bg="warning">Versicolor</Badge></td>
-                    <td><code>[0, 0, 1]</code></td>
+                    <td>[0, 0, 1]</td>
                     <td>Medium petals and sepals</td>
                   </tr>
                 </tbody>
@@ -492,7 +492,7 @@ function App() {
                     customPrediction.predictedSpecies === 'setosa' ? 'primary' :
                     customPrediction.predictedSpecies === 'virginica' ? 'success' : 'warning'
                   } text-white`}>
-                    <h5 className="mb-0">Custom Input Prediction</h5>
+                    <h5 className="mb-0">Prediction Result</h5>
                   </Card.Header>
                   <Card.Body>
                     <div className="mb-4 text-center">
@@ -579,75 +579,57 @@ function App() {
               )}
               
               {predictions && (
-                <Card className="shadow-sm border-0">
-                  <Card.Header className="bg-dark text-white">
-                    <h5 className="mb-0">Iris-Testing Data Predictions</h5>
-                  </Card.Header>
-                  <Card.Body className="p-0">
-                    <Table hover responsive className="mb-0">
-                      <thead className="bg-light">
-                        <tr>
-                          <th>#</th>
-                          <th>Predicted Species</th>
-                          <th>Probabilities</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {predictions.species.map((species, index) => (
-                          <tr key={index}>
-                            <td className="fw-bold">{index + 1}</td>
-                            <td>
-                              <Badge 
-                                bg={
-                                  species === 'setosa' ? 'primary' :
-                                  species === 'virginica' ? 'success' : 'warning'
-                                }
-                                pill
-                              >
-                                {species}
-                              </Badge>
-                            </td>
-                            <td>
-                              <div className="d-flex flex-column gap-1">
-                                <div className="d-flex align-items-center">
-                                  <div className="w-25 text-end pe-2 small">Setosa:</div>
-                                  <div className="progress flex-grow-1" style={{ height: "6px" }}>
-                                    <div 
-                                      className="progress-bar bg-primary" 
-                                      style={{ width: `${predictions.probabilities[index][0] * 100}%` }}
-                                    ></div>
-                                  </div>
-                                  <div className="w-25 ps-2 small">{formatProbability(predictions.probabilities[index][0])}</div>
-                                </div>
-                                <div className="d-flex align-items-center">
-                                  <div className="w-25 text-end pe-2 small">Virginica:</div>
-                                  <div className="progress flex-grow-1" style={{ height: "6px" }}>
-                                    <div 
-                                      className="progress-bar bg-success" 
-                                      style={{ width: `${predictions.probabilities[index][1] * 100}%` }}
-                                    ></div>
-                                  </div>
-                                  <div className="w-25 ps-2 small">{formatProbability(predictions.probabilities[index][1])}</div>
-                                </div>
-                                <div className="d-flex align-items-center">
-                                  <div className="w-25 text-end pe-2 small">Versicolor:</div>
-                                  <div className="progress flex-grow-1" style={{ height: "6px" }}>
-                                    <div 
-                                      className="progress-bar bg-warning" 
-                                      style={{ width: `${predictions.probabilities[index][2] * 100}%` }}
-                                    ></div>
-                                  </div>
-                                  <div className="w-25 ps-2 small">{formatProbability(predictions.probabilities[index][2])}</div>
-                                </div>
+              <Card className="shadow-sm border-0">
+                <Card.Header className="bg-dark text-white">
+                  <h5 className="mb-0">Iris-Testing Data Predictions Confidence Level</h5>
+                </Card.Header>
+                <Card.Body className="p-0">
+                  <Table hover responsive className="mb-0">
+                    <thead className="bg-light">
+                      <tr>
+                        <th>#</th>
+                        <th>Predicted Species</th>
+                        <th>% of Confidence</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {predictions.species.map((species, index) => (
+                        <tr key={index}>
+                          <td className="fw-bold">{index + 1}</td>
+                          <td>
+                            <Badge 
+                              bg={
+                                species === 'setosa' ? 'primary' :
+                                species === 'virginica' ? 'success' : 'warning'
+                              }
+                              pill
+                            >
+                              {species}
+                            </Badge>
+                          </td>
+                          <td>
+                            <div className="d-flex flex-column gap-1">
+                              <div className="d-flex">
+                                <span className="me-2">Setosa:</span>
+                                <span>{formatProbability(predictions.probabilities[index][0])}</span>
                               </div>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </Table>
-                  </Card.Body>
-                </Card>
-              )}
+                              <div className="d-flex">
+                                <span className="me-2">Virginica:</span>
+                                <span>{formatProbability(predictions.probabilities[index][1])}</span>
+                              </div>
+                              <div className="d-flex">
+                                <span className="me-2">Versicolor:</span>
+                                <span>{formatProbability(predictions.probabilities[index][2])}</span>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </Table>
+                </Card.Body>
+              </Card>
+            )}
             </>
           )}
         </Col>
