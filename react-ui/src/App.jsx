@@ -23,10 +23,10 @@ function App() {
   
   // State for form inputs
   const [formData, setFormData] = useState({
-    sepalLength: 5.1,
-    sepalWidth: 3.5,
-    petalLength: 1.4,
-    petalWidth: 0.2,
+    sepalLength: 1,
+    sepalWidth: 1,
+    petalLength: 1,
+    petalWidth: 1,
     epochs: 100,
     learningRate: 0.06,
     firstLayerUnits: 8,

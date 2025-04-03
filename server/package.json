@@ -1,7 +1,7 @@
 {
     "name": "server",
     "version": "1.0.0",
-    "description": "Lab 4 - Iris Example",
+    "description": "Tanya Truong 301298361 | COMP308 - Lab4",
     "main": "server.js",
     "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1",
